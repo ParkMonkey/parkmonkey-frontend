@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Modal, Pressable, StyleSheet, TextInput, Touchable, TouchableOpacity } from 'react-native';
+import { Modal, Pressable, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Colors from '../constants/Colors';
 import { useAuth } from '../context/AuthContext';
 import Btn from './custom/Btn';
 import Txt from './custom/Txt';
 import Vew from './custom/Vew';
-import Logo from './Logo';
 
 interface LoginModalProps {}
 
@@ -46,7 +45,10 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
                 </Vew>
 
                 <Txt color="black" fontWeight={"700"} fontSize={40} mb={16}>Login</Txt>
-                <Logo size={{width: 100, height: 100, fontSize: 16}} />
+                <Image 
+                    source={require('../assets/images/green_logo_outline.png')} 
+                    style={{width: 125, height: 125, resizeMode:'contain', marginBottom: 8}}
+                />
 
                 <TextInput 
                     ref={emailRef}
