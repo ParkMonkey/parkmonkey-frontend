@@ -64,7 +64,7 @@ function BottomTabNavigator() {
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+          title: 'Dashboard',
           tabBarIcon: ({ focused }) => <TabBarIcon name="code" color={focused ? Colors.brand.green : Colors.brand.dark} />,
           headerRight: () => (
             <Pressable

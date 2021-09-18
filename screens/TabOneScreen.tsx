@@ -1,30 +1,57 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Index from "./TabOne/Index";
+import MapScreen from './TabOne/MapScreen';
+import Vew from '../components/custom/Vew';
+import Txt from '../components/custom/Txt';
+import { useAuth } from '../context/AuthContext';
+import Colors from '../constants/Colors';
 
-import { RootTabScreenProps } from '../types';
+const Stack = createStackNavigator();
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Placeholder for map search</Text>
-      <View style={styles.separator} />
-    </View>
-  );
+interface TabOneScreenInterface{
+  navigation?: any
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
+  const {email, loggedIn} = useAuth();
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Index} 
+        options={{
+          headerTitle: (props => (
+            <Vew flexDir="column" h={70} bg={Colors.brand.green}>
+              <Txt fontSize={14} flexWrap="wrap" color="white">Welcome back!</Txt>
+              <Txt fontWeight="700" fontSize={30} flexWrap="wrap" color="white">{email}</Txt>
+            </Vew>
+          )),
+          headerTintColor: "whitesmoke", // back arrow
+          headerStyle: {
+            backgroundColor: Colors.brand.green,
+            elevation:0, shadowOpacity:0,
+          },
+          // cardStyle:{
+          //   backgroundColor: Colors.brand.dark,
+          // }
+        }}
+      />
+      <Stack.Screen name="Map" component={MapScreen} 
+        options={{
+          headerTitleAlign: "center",
+          headerTitle: (props => <Txt fontWeight="700" fontSize={22} textAlign="center" flexWrap="wrap">Map</Txt>),
+          headerTintColor: "whitesmoke", // back arrow
+          headerStyle: {
+            backgroundColor: Colors.brand.dark,
+            elevation:0, shadowOpacity:0
+          },
+          // cardStyle:{
+          //   backgroundColor: Colors.brand.dark,
+          // }
+      }}
+      />
+    </Stack.Navigator>
+    
+  );
+}
