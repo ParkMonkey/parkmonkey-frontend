@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { Pressable } from 'react-native';
+import Vew from '../components/custom/Vew';
 
 import Colors from '../constants/Colors';
 import ModalScreen from '../screens/ModalScreen';
@@ -65,6 +66,7 @@ function BottomTabNavigator() {
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           title: 'Dashboard',
+          header: (props => <Vew p={20}></Vew>),
           tabBarIcon: ({ focused }) => <TabBarIcon name="code" color={focused ? Colors.brand.green : Colors.brand.dark} />,
           headerRight: () => (
             <Pressable

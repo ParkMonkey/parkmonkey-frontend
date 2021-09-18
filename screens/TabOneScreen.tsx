@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Pressable } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Index from "./TabOne/Index";
 import MapScreen from './TabOne/MapScreen';
@@ -7,6 +7,7 @@ import Vew from '../components/custom/Vew';
 import Txt from '../components/custom/Txt';
 import { useAuth } from '../context/AuthContext';
 import Colors from '../constants/Colors';
+import { FontAwesome } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -46,9 +47,23 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
           headerTitle: (props => <Txt fontWeight="700" fontSize={22} textAlign="center" flexWrap="wrap">Map</Txt>),
           headerTintColor: "whitesmoke", // back arrow
           headerStyle: {
-            backgroundColor: Colors.brand.dark,
-            elevation:0, shadowOpacity:0
+            backgroundColor: Colors.brand.green,
+            elevation:5, shadowOpacity:.5
           },
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate('Modal')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}>
+              <FontAwesome
+                name="bullseye"
+                size={25}
+                color={Colors.brand.white}
+                style={{ marginRight: 15 }}
+              />
+            </Pressable>
+          ),
           // cardStyle:{
           //   backgroundColor: Colors.brand.dark,
           // }
