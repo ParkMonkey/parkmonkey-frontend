@@ -14,9 +14,9 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation />
-        <StatusBar />
         <AuthProvider>
+          <Navigation />
+          <StatusBar />
           <LoginModal />
         </AuthProvider>
       </SafeAreaProvider>
