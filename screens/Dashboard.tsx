@@ -1,7 +1,6 @@
-import { PROPERTY_TYPES } from '@babel/types';
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import DashboardWelcome from '../components/DashboardWelcome';
+import DashboardWelcome from '../components/ScreenTitle';
 
 export default function LoadingScreen() {
     return (
