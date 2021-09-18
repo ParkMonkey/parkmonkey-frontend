@@ -1,4 +1,6 @@
-// vamiq's custom version of React Native's <Text>
+// vamiq's custom version of React Native's <Text>:
+// all you need to know is that it works the same as <Text>,
+// though just with some extra inline styling functionality
 import React from 'react';
 import { Text, ColorValue, FlexAlignType, StyleProp, TextStyle } from 'react-native';
 

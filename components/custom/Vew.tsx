@@ -1,4 +1,6 @@
-// vamiq's custom version of React Native's <View>
+// vamiq's custom version of React Native's <View>:
+// all you need to know is that it works the same as <View>,
+// though just with some extra inline styling functionality
 import React from 'react';
 import { ColorValue, FlexAlignType, StyleProp, View, ViewStyle } from 'react-native';
 
