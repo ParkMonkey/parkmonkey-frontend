@@ -6,7 +6,7 @@ import Txt from './Txt';
 import Vew from './Vew';
 
 interface BtnProps {
-    icon?: string,
+    icon?: string | any,
     bg?: string,
     size?: number,
     color?: string,
@@ -16,10 +16,10 @@ interface BtnProps {
     borderRadius?: number,
 }
 
-const Btn: React.FC<BtnProps> = ({icon, bg, size, color, text, style, padding=2, borderRadius=2}) => {
+const Btn: React.FC<BtnProps> = ({icon, bg, size, color, text, style, padding=2, borderRadius=4}) => {
     return (
     <Vew alignItems="center" bg={bg} flexDir="row" style={style} p={padding} borderRadius={borderRadius}>
-        {icon && <FontAwesome  color={color} size={size} />}
+        {icon && <FontAwesome name={icon} color={color} size={size} />}
         {text && <Txt color={color} mr={icon ? 8 : 0} fontSize={size} fontWeight="700">{text}</Txt>}
     </Vew>);
 }
