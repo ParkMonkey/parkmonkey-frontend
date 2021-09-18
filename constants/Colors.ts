@@ -19,5 +19,6 @@ export default {
   brand: {
     dark: "#1E1E1E",
     green: "#1ECF65",
+    grey: "#C4C4C4",
   }
 };
