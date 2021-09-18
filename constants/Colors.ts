@@ -19,7 +19,7 @@ export default {
   brand: {
     dark: "#1E1E1E",
     green: "#1ECF65",
-    grey: "#C4C4C4",
+    white: "#FFFFFF",
   },
   blackAlpha: {
     900: "rgba(0, 0, 0, 0.9)",
