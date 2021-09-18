@@ -9,7 +9,7 @@ const Index: React.FC<IndexProps> = ({navigation}) => {
     return (
     <>
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.navigate("")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Map")}>
                 <Text style={styles.title}>Placeholder for Map Search (press me)</Text>
             </TouchableOpacity>
             <View style={styles.separator} />

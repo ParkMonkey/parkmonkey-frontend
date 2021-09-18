@@ -22,7 +22,10 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
       <Stack.Screen name="Home" component={Index} 
         options={{
           headerTitle: (props => (
-            <Vew flexDir="column" h={70} bg={Colors.brand.green}>
+            <Vew flexDir="column" h={90} bg={Colors.brand.green} w={Dimensions.get('window').width} ml={-16} mt={32} p={16} style={{
+              elevation:5, shadowOpacity:.5,
+              borderBottomLeftRadius: 16, borderBottomRightRadius: 16, 
+            }}>
               <Txt fontSize={14} flexWrap="wrap" color="white">Welcome back!</Txt>
               <Txt fontWeight="700" fontSize={30} flexWrap="wrap" color="white">{email}</Txt>
             </Vew>

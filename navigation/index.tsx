@@ -80,6 +80,10 @@ function BottomTabNavigator() {
               />
             </Pressable>
           ),
+          headerStyle: {
+            // backgroundColor: Colors.brand.green,
+            elevation:0, shadowOpacity:0,
+          },
         })}
       />
       <BottomTab.Screen
