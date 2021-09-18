@@ -56,13 +56,16 @@ function BottomTabNavigator() {
       initialRouteName="TabOne"
       screenOptions={{
         tabBarActiveTintColor: Colors.brand.dark,
-      }}>
+        tabBarShowLabel: false,
+        tabBarItemStyle:{paddingBottom:3}
+      }}
+      >
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ focused }) => <TabBarIcon name="code" color={focused ? Colors.brand.green : Colors.brand.dark} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -72,7 +75,7 @@ function BottomTabNavigator() {
               <FontAwesome
                 name="info-circle"
                 size={25}
-                color={Colors.brand.green}
+                color={Colors.brand.dark}
                 style={{ marginRight: 15 }}
               />
             </Pressable>
@@ -84,7 +87,7 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ focused }) => <TabBarIcon name="code" color={focused ? Colors.brand.green : Colors.brand.dark} />,
         }}
       />
     </BottomTab.Navigator>

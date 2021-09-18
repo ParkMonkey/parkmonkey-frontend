@@ -65,7 +65,7 @@ const AuthProvider: React.FC<AuthContextProps> = ({children}) => {
 
     return (
     <>
-        <AuthContext.Provider value={value} >
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     </>);
