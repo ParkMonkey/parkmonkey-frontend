@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Modal, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { Modal, Pressable, StyleSheet, TextInput, Touchable, TouchableOpacity } from 'react-native';
 import Colors from '../constants/Colors';
 import { useAuth } from '../context/AuthContext';
 import Btn from './custom/Btn';
@@ -26,7 +26,8 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
             <Btn 
                 color={Colors.brand.green}
                 size={40}
-                icon={"arrow-left"}
+                icon={"times"} // arrow-left
+                padding={8}
             />
         </TouchableOpacity>
     )
@@ -40,7 +41,7 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
             onRequestClose={toggle}
         >
             <Vew style={[styles.centeredView]}>
-                <Vew position="absolute" style={{top: 0, left: 0, margin: 16}}>
+                <Vew position="absolute" style={{top: 0, left: 0, margin: 8}}>
                     {closeModalBtn()}
                 </Vew>
 
@@ -65,25 +66,32 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
                     placeholderTextColor={Colors.blackAlpha[200]}
                 />
 
-                <TouchableOpacity>
-                    <Btn 
-                        text="LOG IN"
-                        bg={Colors.brand.green}
-                        size={24}
-                        padding={10}
-                        borderRadius={16}
-                        style={{
-                            marginTop: 16,
-                            paddingHorizontal: "17%",
-                            shadowColor: "black",
-                            shadowOffset: {
-                                width: 8, height: 9
-                            },
-                            shadowOpacity: 0.9,
-                            elevation: 6,
-                        }}
-                    />
-                </TouchableOpacity>
+                <Pressable>
+                    {({ pressed }) => (
+                        <Btn 
+                            text="LOG IN"
+                            bg={pressed ? Colors.brand.dark : Colors.brand.green}
+                            size={24}
+                            style={{
+                                marginTop: 16,
+                                padding:10,
+                                borderRadius: 16,
+                                paddingHorizontal: "17%",
+                                shadowColor: "black",
+                                shadowOffset: {
+                                    width: 8, height: 9
+                                },
+                                shadowOpacity: 0.9,
+                                elevation: 6,
+                            }}
+                        />
+                    )}
+                </Pressable>
+
+                <Txt color={Colors.blackAlpha[200]} mt={16}>
+                    Don't have an account? 
+                    <Txt color={Colors.blackAlpha[500]}> Sign up here.</Txt>
+                </Txt>
                 
             </Vew>
         </Modal>
