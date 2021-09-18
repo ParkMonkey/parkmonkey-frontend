@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Modal, Pressable, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Modal, Pressable, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import Colors from '../constants/Colors';
 import { useAuth } from '../context/AuthContext';
 import Btn from './custom/Btn';
@@ -9,18 +9,14 @@ import Vew from './custom/Vew';
 interface LoginModalProps {}
 
 const LoginModal: React.FC<LoginModalProps> = ({}) => {
-    // VAMIQ WILL FINISH THIS.
-    const {loggedIn, login} = useAuth();
+    const {login} = useAuth();
     const [open, setOpen] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const emailRef = useRef<TextInput>(null);
-    const passwordRef = useRef<TextInput>(null);
-
     const toggle = () => setOpen(!open);
 
-    const closeModalBtn = (txt?:string | undefined) => (
+    const closeModalBtn = () => (
         <TouchableOpacity onPress={toggle}>
             <Btn 
                 color={Colors.brand.green}
@@ -30,6 +26,17 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
             />
         </TouchableOpacity>
     )
+
+    const loginUser = () => {
+        if (!email && !password) return Alert.alert(
+            "Invalid email and or password.",
+            "Please fill in the appropriate field(s).",
+            [ { text: "OK" } ],
+        );
+
+        login(Math.random().toString(), email, "username_invalid", "pfpUrl_invalid", {});
+        toggle();
+    }
 
     return (
     <>
@@ -51,7 +58,6 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
                 />
 
                 <TextInput 
-                    ref={emailRef}
                     style={styles.textInput}
                     value={email}
                     onChangeText={setEmail}
@@ -60,7 +66,6 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
                 />
 
                 <TextInput 
-                    ref={emailRef}
                     style={styles.textInput}
                     value={password}
                     onChangeText={setPassword}
@@ -68,7 +73,7 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
                     placeholderTextColor={Colors.blackAlpha[200]}
                 />
 
-                <Pressable>
+                <Pressable onPress={loginUser}>
                     {({ pressed }) => (
                         <Btn 
                             text="LOG IN"
