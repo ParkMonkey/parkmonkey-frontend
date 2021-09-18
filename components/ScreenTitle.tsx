@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 export default function ScreenTitle(props) {
     return (
       <View style={styles.container}>
-        <Image source={require(props.image)} style={styles.image} />
+        <Image source={props.path} style={styles.image} />
         <View>
           <Text style={styles.subText}>{props.subtext}</Text>
           <Text style={styles.title}>{props.title}</Text>
@@ -19,7 +19,7 @@ export default function ScreenTitle(props) {
     container: {
       backgroundColor: '#1ECF65',
       padding: 40,
-      paddingTop: 40,
+      paddingTop: 30,
       paddingBottom: 60,
       borderBottomLeftRadius: 15,
       borderBottomRightRadius: 15,

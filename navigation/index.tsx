@@ -19,6 +19,7 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import ActivityScreen from '../screens/ActivityScreen';
 
 export default function Navigation() {
   return (
@@ -125,7 +126,7 @@ function BottomTabNavigator() {
         <Drawer.Screen name="Search" component={TabOneScreen} options={{
 
         }} />
-        <Drawer.Screen name="Activity" component={TabOneScreen} />
+        <Drawer.Screen name="Activity" component={ActivityScreen} />
         <Drawer.Screen name="Landlord" component={TabOneScreen} />
         <Drawer.Screen name="Message" component={TabOneScreen} />
         <Drawer.Screen name="Settings" component={TabOneScreen} />
