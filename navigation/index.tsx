@@ -101,12 +101,30 @@ function BottomTabNavigator() {
         />
       </BottomTab.Navigator> */}
 
-      <Drawer.Navigator initialRouteName="Dashboard">
+      <Drawer.Navigator initialRouteName="Dashboard" screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.brand.green,
+          elevation: 0,
+        },
+        headerTitleStyle: {
+          color: "white"
+        },
+        drawerStyle: {
+          backgroundColor: Colors.brand.green
+        },
+        headerTintColor:"white"
+      }}>
         <Drawer.Screen name="Dashboard" component={TabOneScreen} 
           options={{
+            drawerIcon: () => (
+              <FontAwesome color="white" size={16} name="bars" />
+            ),
+            
           }}
         />
-        <Drawer.Screen name="Search" component={TabOneScreen} />
+        <Drawer.Screen name="Search" component={TabOneScreen} options={{
+
+        }} />
         <Drawer.Screen name="Activity" component={TabOneScreen} />
         <Drawer.Screen name="Landlord" component={TabOneScreen} />
         <Drawer.Screen name="Message" component={TabOneScreen} />
