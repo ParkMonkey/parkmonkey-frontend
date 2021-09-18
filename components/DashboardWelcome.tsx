@@ -1,14 +1,15 @@
 import { PROPERTY_TYPES } from '@babel/types';
 import * as React from 'react';
 import { Card, Title, Paragraph } from 'react-native-paper';
-import Toolbar from './Toolbar'
+import Toolbar from './Toolbar';
+import { StyleSheet } from 'react-native';
 
-export default function DashboardWelcome(props) {
+export default function DashboardWelcome() {
     return (
         <Card style={styles.card}>
             <Toolbar />
             <Paragraph style={styles.welcome}>Welcome Back!</Paragraph>
-            <Title style={styles.title}>{props.name}</Title>
+            <Title style={styles.title}>Joe</Title>
         </Card>
 
       );
@@ -19,7 +20,7 @@ export default function DashboardWelcome(props) {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        background: 'green'
+        backgroundColor: 'green'
       },
       title: {
         fontSize: 60,
