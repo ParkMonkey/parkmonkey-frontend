@@ -1,8 +1,11 @@
-// vamiq's custom version of React Native's <View>
+// vamiq's custom version of React Native's <Text>
 import React from 'react';
-import { ColorValue, FlexAlignType, StyleProp, View, ViewStyle } from 'react-native';
+import { Text, ColorValue, FlexAlignType, StyleProp, TextStyle } from 'react-native';
 
-interface CustomViewProps {
+interface CustomTextProps {
+    color?: ColorValue,
+    fontWeight?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900", // fontWeight
+    fontSize?: number // fontSize,
     m?: number,
     ml?: number,
     mr?: number,
@@ -11,6 +14,19 @@ interface CustomViewProps {
     my?: number,
     mx?: number,
     p?: number,
+    pl?: number,
+    pr?: number,
+    pt?: number,
+    pb?: number,
+    py?: number,
+    px?: number,
+    textAlign?: "center" | "auto" | "left" | "right" | "justify",
+    opacity?: number,
+    overflow?: "visible" | "hidden" | "scroll",
+    zIndex?: number,
+    alignItems?: FlexAlignType,
+    justifyContent?: "center" | "flex-start" | "flex-end" | "space-between" | "space-around" | "space-evenly",
+    flexWrap?: "wrap" | "nowrap" | "wrap-reverse",
     margin?: number,
     marginLeft?: number,
     marginBottom?: number,
@@ -21,51 +37,27 @@ interface CustomViewProps {
     paddingRight?: number,
     paddingTop?: number,
     paddingBottom?: number,
-    pl?: number,
-    pr?: number,
-    pt?: number,
-    pb?: number,
-    py?: number,
-    px?: number,
-    flexDirection?: "row" | "column" | "row-reverse" | "column-reverse",
-    flexDir?: "row" | "column" | "row-reverse" | "column-reverse",
-    alignItems?: FlexAlignType,
-    alignContent?: "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around",
-    alignSelf?: FlexAlignType | "auto",
-    justifyContent?: "center" | "flex-start" | "flex-end" | "space-between" | "space-around" | "space-evenly",
-    backgroundColor?: ColorValue,
-    bg?: ColorValue,
-    borderRadius?: number,
-    zIndex?: number,
-    opacity?: number,
-    overflow?: "visible" | "hidden" | "scroll",
-    width?: number | string,
-    w?: number | string,
-    height?: number | string,
-    h?: number | string,
-    position?: "absolute" | "relative",
-    flexWrap?: "wrap" | "nowrap" | "wrap-reverse",
-    flex?: number,
-    display?: "none" | "flex",
-    style?:StyleProp<ViewStyle>
+    style?:StyleProp<TextStyle>
 }
-const Vew: React.FC<CustomViewProps> = (
+const Txt: React.FC<CustomTextProps> = (
     {
-        children, width, height,
+        color="whitesmoke", fontWeight, fontSize, children, 
         m,ml,mr,mt,mb,my,mx,pl,pr,pt,pb,
-        py,px,opacity,overflow,
-        zIndex,alignItems,justifyContent,p, 
-        style,flexDirection, bg, flexDir, w, h,
-        position, flexWrap, borderRadius,
-        alignContent, alignSelf, backgroundColor, margin,
+        py,px,textAlign,opacity,overflow,
+        zIndex,alignItems,justifyContent,p, style,
+        flexWrap,
+        margin,
         marginBottom, marginLeft, marginRight, marginTop,
         padding, paddingBottom, paddingLeft, paddingRight,
-        paddingTop, flex, display
+        paddingTop
     }
 ) => {
 
     const getStyle = () => {
         let obj = {};
+        color && Object.assign(obj, {color});
+        fontWeight && Object.assign(obj, {fontWeight});
+        fontSize && Object.assign(obj, {fontSize});
         m && Object.assign(obj, {margin: m});
         ml && Object.assign(obj, {marginLeft: ml});
         mr && Object.assign(obj, {marginRight: mr});
@@ -80,24 +72,13 @@ const Vew: React.FC<CustomViewProps> = (
         pb && Object.assign(obj, {paddingBottom: pb});
         py && Object.assign(obj, {paddingVertical: py});
         px && Object.assign(obj, {paddingHorizontal: px});
+        textAlign && Object.assign(obj, {textAlign});
         opacity && Object.assign(obj, {opacity});
         overflow && Object.assign(obj, {overflow});
         zIndex && Object.assign(obj, {zIndex});
         alignItems && Object.assign(obj, {alignItems});
         justifyContent && Object.assign(obj, {justifyContent});
-        width && Object.assign(obj, {width});
-        height && Object.assign(obj, {height});
-        flexDirection && Object.assign(obj, {flexDirection});
-        flexDir && Object.assign(obj, {flexDirection: flexDir});
-        bg && Object.assign(obj, {backgroundColor: bg});
-        w && Object.assign(obj, {width: w});
-        h && Object.assign(obj, {height: h});
-        position && Object.assign(obj, {position: position});
         flexWrap && Object.assign(obj, {flexWrap});
-        borderRadius && Object.assign(obj, {borderRadius});
-        alignContent && Object.assign(obj, {alignContent});
-        alignSelf && Object.assign(obj, {alignSelf});
-        backgroundColor && Object.assign(obj, {backgroundColor});
         margin && Object.assign(obj, {margin});
         marginBottom && Object.assign(obj, {marginBottom});
         marginTop && Object.assign(obj, {marginTop});
@@ -108,17 +89,15 @@ const Vew: React.FC<CustomViewProps> = (
         paddingTop && Object.assign(obj, {paddingTop});
         paddingLeft && Object.assign(obj, {paddingLeft});
         paddingRight && Object.assign(obj, {paddingRight});
-        flex && Object.assign(obj, {flex});
-        display && Object.assign(obj, {display});
 
         return obj;
     }
 
     return (
-        <View style={[getStyle(), style]}>
+        <Text style={[getStyle(), style]}>
             {children}
-        </View>
+        </Text>
     );
 }
 
-export default Vew;
+export default Txt;
