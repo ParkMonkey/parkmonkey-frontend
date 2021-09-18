@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface MapScreenProps {
-    navigation?:string
+    navigation?: any
 }
 
 const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {

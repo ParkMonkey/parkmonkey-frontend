@@ -28,7 +28,7 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
     )
 
     const loginUser = () => {
-        if (!email && !password) return Alert.alert(
+        if (!email || !password) return Alert.alert(
             "Invalid email and or password.",
             "Please fill in the appropriate field(s).",
             [ { text: "OK" } ],
