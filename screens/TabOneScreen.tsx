@@ -79,6 +79,9 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
             backgroundColor: Colors.brand.green,
             elevation:0, shadowOpacity:0
           },
+          cardStyle: {
+            backgroundColor: "#CADBE1"
+          }
       }}
       />
     </Stack.Navigator>
