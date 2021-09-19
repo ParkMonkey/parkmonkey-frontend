@@ -18,6 +18,7 @@ export default function ScreenTitle(props) {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#1ECF65',
+      width: '100%',
       padding: 40,
       paddingTop: 30,
       paddingBottom: 60,
@@ -33,6 +34,7 @@ export default function ScreenTitle(props) {
       shadowRadius: 3.84,
 
       elevation: 5,
+      marginBottom: 60
     },
     subText: {
       color: 'white',
@@ -43,7 +45,7 @@ export default function ScreenTitle(props) {
     title: {
       color: 'white',
       fontFamily: 'josefin',
-      fontSize: 70,
+      fontSize: 80,
       fontWeight: 'bold'
     },
     image: {
