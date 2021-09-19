@@ -77,8 +77,11 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
           headerTintColor: "whitesmoke", // back arrow
           headerStyle: {
             backgroundColor: Colors.brand.green,
-            elevation:5, shadowOpacity:.5
+            elevation:0, shadowOpacity:0
           },
+          cardStyle: {
+            backgroundColor: "#CADBE1"
+          }
       }}
       />
     </Stack.Navigator>
