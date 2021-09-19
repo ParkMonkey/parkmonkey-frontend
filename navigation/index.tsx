@@ -20,6 +20,8 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ActivityScreen from '../screens/ActivityScreen';
+import Txt from '../components/custom/Txt';
+import { useEffect } from 'react';
 
 export default function Navigation() {
   return (
@@ -50,22 +52,49 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const Drawer = createDrawerNavigator();
 
+
+
 function BottomTabNavigator() {
   return (
     <>
-      <Drawer.Navigator initialRouteName="Dashboard" screenOptions={{
-        headerStyle: {
-          backgroundColor: Colors.brand.green,
-          elevation: 0,
-        },
-        headerTitleStyle: {
-          color: "white"
-        },
-        drawerStyle: {
-          backgroundColor: Colors.brand.green
-        },
-        headerTintColor:"white",
-      }}>
+      <Drawer.Navigator initialRouteName="Dashboard" 
+        // drawerContent={props => (
+        //   <Vew >
+        //     <Txt>hi</Txt>
+        //   </Vew>
+        // )}
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: Colors.brand.green,
+            elevation: 0,
+          },
+          headerTitleStyle: {
+            color: "white"
+          },
+          drawerStyle: {
+            backgroundColor: Colors.brand.green
+          },
+          headerTintColor:"white",
+        }}
+      >
+        <Drawer.Screen name={"drawer_menu_logo"} component={({navigation}) => {
+          useEffect(() => { navigation.navigate("Dashboard") },[navigation])
+          return <></>;
+        }}
+          options={{
+            drawerIcon: () => (
+              <Vew flex={1} justifyContent="center" flexDir="row" alignItems="center" style={{elevation: 5, shadowOpacity: 0.5}}>
+
+              </Vew>
+            ),
+            drawerLabelStyle: {
+              color: "white",
+              fontSize: 20,
+              fontFamily: 'josefin',
+              display: "none"
+            }
+          }}
+        />
         {
           [
             { name: "Dashboard", component: TabOneScreen, icon: "bars" },
