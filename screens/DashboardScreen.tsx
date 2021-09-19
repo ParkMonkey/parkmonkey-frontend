@@ -7,6 +7,7 @@ import Vew from "../components/custom/Vew";
 import Txt from "../components/custom/Txt";
 import Colors from "../constants/Colors";
 import { useAuth } from "../context/AuthContext";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function LoadingScreen(props:any) {
   const {email, loggedIn} = useAuth();
@@ -21,11 +22,24 @@ export default function LoadingScreen(props:any) {
               <Txt fontWeight="700" fontSize={50} flexWrap="wrap" color="white">{email}</Txt>
           </Vew>
         <View style={styles.cardContainer}>
-          <TouchableOpacity onPress={() => props.navigation.navigate("Map")}>
-            <Vew>
-              <Text style={styles.title}>Map Search</Text>
-            </Vew>
-          </TouchableOpacity>
+          <Vew>
+            <Text style={styles.title}>Map Search</Text>
+            <TouchableOpacity onPress={() => props.navigation.navigate("Map")}>
+              <Vew position="relative">
+                <Vew justifyContent="center" alignItems="center" height={200} mt={-32}>
+                  <Image
+                    style={{resizeMode: 'contain', width: Dimensions.get('window').width - 32, borderRadius: 12 }}
+                    source={require("../assets/images/google_map.png")}
+                  />
+                </Vew>
+                <Vew flexDir="row" justifyContent="flex-end" w={Dimensions.get('window').width - 32}>
+                  <Vew bg={Colors.brand.green} borderRadius={12} style={{elevation: 2, transform:[{translateY: -55}]}} w={80} p={8} alignItems={'center'}>
+                    <FontAwesome color="white" size={40} name={"map"} />
+                  </Vew>
+                </Vew>
+              </Vew>
+            </TouchableOpacity>
+          </Vew>
           <Text style={styles.title}>Your Activity</Text>
           <ActivityCard
             date="11/09/21"
