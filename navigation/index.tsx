@@ -110,7 +110,7 @@ function BottomTabNavigator() {
       >
         {
           [
-            { name: "Dashboard", component: DashboardScreen, icon: "bars" },
+            { name: "Dashboard", component: TabOneScreen, icon: "bars" },
             { name: "Search", component: SearchLocation, icon: "map" },
             { name: "Activity", component: ActivityScreen, icon: "clock-o" },
             { name: "Landlord", component: LandlordUnverifiedScreen, icon: "home" },

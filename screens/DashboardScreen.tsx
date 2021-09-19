@@ -1,17 +1,31 @@
 import * as React from "react";
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity, Dimensions } from "react-native";
 import ScreenTitle from "../components/ScreenTitle";
 import ActivityCard from "../components/ActivityCard";
 import DashboardMessages from "../components/DashboardMessages";
-import { block } from "react-native-reanimated";
+import Vew from "../components/custom/Vew";
+import Txt from "../components/custom/Txt";
+import Colors from "../constants/Colors";
+import { useAuth } from "../context/AuthContext";
 
-export default function LoadingScreen() {
+export default function LoadingScreen(props:any) {
+  const {email, loggedIn} = useAuth();
   return (
     <ScrollView bounces={false}>
       <View style={styles.container}>
-        <ScreenTitle path={{}} subtext="Welcome Back!" title="John Doe" />
+          <Vew flexDir="column" bg={Colors.brand.green} w={Dimensions.get('window').width} p={16} py={8} style={{
+              elevation:5, shadowOpacity:.5,
+              borderBottomLeftRadius: 16, borderBottomRightRadius: 16, 
+            }}>
+              <Txt fontSize={25} flexWrap="wrap" color="white">Welcome back!</Txt>
+              <Txt fontWeight="700" fontSize={50} flexWrap="wrap" color="white">{email}</Txt>
+          </Vew>
         <View style={styles.cardContainer}>
-          <Text style={styles.title}>Map Search</Text>
+          <TouchableOpacity onPress={() => props.navigation.navigate("Map")}>
+            <Vew>
+              <Text style={styles.title}>Map Search</Text>
+            </Vew>
+          </TouchableOpacity>
           <Text style={styles.title}>Your Activity</Text>
           <ActivityCard
             date="11/09/21"

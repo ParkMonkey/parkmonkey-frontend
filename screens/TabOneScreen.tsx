@@ -5,10 +5,10 @@ import Index from "./TabOne/Index";
 import MapScreen from './TabOne/MapScreen';
 import Vew from '../components/custom/Vew';
 import Txt from '../components/custom/Txt';
-import { useAuth } from '../context/AuthContext';
 import Colors from '../constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
 import SearchLocation from './TabOne/SearchLocation';
+import DashboardScreen from './DashboardScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,25 +17,18 @@ interface TabOneScreenInterface{
 }
 
 export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
-  const {email, loggedIn} = useAuth();
-
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Index} 
+      <Stack.Screen name="Home" component={DashboardScreen} 
         options={{
+          headerShown: false,
           headerTitle: (props => (
-            <Vew flexDir="column" h={90} bg={Colors.brand.green} w={Dimensions.get('window').width} ml={-16} mt={32} p={16} style={{
-              elevation:5, shadowOpacity:.5,
-              borderBottomLeftRadius: 16, borderBottomRightRadius: 16, 
-            }}>
-              <Txt fontSize={14} flexWrap="wrap" color="white">Welcome back!</Txt>
-              <Txt fontWeight="700" fontSize={30} flexWrap="wrap" color="white">{email}</Txt>
-            </Vew>
+            <></>
           )),
           headerTintColor: "whitesmoke", // back arrow
           headerStyle: {
             backgroundColor: Colors.brand.green,
-            elevation:0, shadowOpacity:0,
+            elevation:0, shadowOpacity:0, zIndex: 0
           },
           // cardStyle:{
           //   backgroundColor: Colors.brand.dark,
