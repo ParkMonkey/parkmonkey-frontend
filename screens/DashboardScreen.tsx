@@ -26,58 +26,79 @@ export default function LoadingScreen(props:any) {
             <Text style={styles.title}>Map Search</Text>
             <TouchableOpacity onPress={() => props.navigation.navigate("Map")}>
               <Vew position="relative">
-                <Vew justifyContent="center" alignItems="center" height={200} mt={-32}>
+                <Vew justifyContent="center" alignItems="center" height={120}>
                   <Image
                     style={{resizeMode: 'contain', width: Dimensions.get('window').width - 32, borderRadius: 12 }}
                     source={require("../assets/images/google_map.png")}
                   />
                 </Vew>
                 <Vew flexDir="row" justifyContent="flex-end" w={Dimensions.get('window').width - 32}>
-                  <Vew bg={Colors.brand.green} borderRadius={12} style={{elevation: 2, transform:[{translateY: -55}]}} w={80} p={8} alignItems={'center'}>
+                  <Vew bg={Colors.brand.green} borderRadius={12} style={{elevation: 2, transform:[{translateY: -15}]}} w={80} p={8} alignItems={'center'}>
                     <FontAwesome color="white" size={40} name={"map"} />
                   </Vew>
                 </Vew>
               </Vew>
             </TouchableOpacity>
           </Vew>
-          <Text style={styles.title}>Your Activity</Text>
-          <ActivityCard
-            date="11/09/21"
-            time="60"
-            address="4541 Churchill St."
-            isGreen={true}
-          />
-          <ActivityCard
-            date="13/09/21"
-            time="120"
-            address="593 Erindale Rd."
-            isGreen={true}
-          />
-          <ActivityCard
-            date="11/09/21"
-            time="60"
-            address="2334 Hadock St."
-            isGreen={true}
-          />
-          <Text style={styles.title}>Landlording</Text>
+          <Txt style={styles.title} mt={4} color="black" >Your Activity</Txt>
+          <Vew my={-23} mt={-31}>
+            <ActivityCard
+              date="11/09/21"
+              time="60"
+              address="4541 Churchill St."
+              isGreen={true}
+              padding={16}
+            />
+          </Vew>
+          <Vew my={-23}>
+            <ActivityCard
+              date="13/09/21"
+              time="120"
+              address="593 Erindale Rd."
+              isGreen={true}
+              padding={16}
+            />
+          </Vew>
+          <Vew my={-23} mb={-38}>
+            <ActivityCard
+              date="11/09/21"
+              time="60"
+              address="2334 Hadock St."
+              isGreen={true}
+              padding={16}
+            />
+          </Vew>
+          <Text style={[styles.title, {marginBottom: 12}]}>Landlording</Text>
           <Image
             style={styles.image}
             source={require("../assets/images/house_1.png")}
           />
           <RentPlate address="6979 Greenrose Dr." />
-          <Text style={styles.title}>Your Messages</Text>
-          <DashboardMessages
-            date="10/09/21"
-            message="Hello, is your driveway at 6979 Compton Dr. still available?"
-          />
-          <DashboardMessages
-            date="12/09/21"
-            message="What's up dude, can I park at 6979 Compton Dr. today?"
-          />
-          <DashboardMessages
-            date="14/09/21"
-            message="Need parking, 6979 Compton Dr. In 30 minutes? Ok????"
-          />
+          <Text style={[styles.title, {marginTop: -95}]}>Your Messages</Text>
+          <Vew my={-20} mt={-34}>
+            <DashboardMessages
+              date="10/09/21"
+              message="Hello, is your driveway at 6979 Compton Dr. still available?"
+              to="Stacy"
+              padding={16}
+            />
+          </Vew>
+          <Vew my={-20}>
+            <DashboardMessages
+              date="12/09/21"
+              message="What's up dude, can I park at 4517 Gallpoint Cres. today?"
+              to="Dan"
+              padding={16}
+            />
+          </Vew>
+          <Vew my={-20} mb={-80}>
+            <DashboardMessages
+              date="14/09/21"
+              message="Need parking, 3920 Moonwell St. In 30 minutes? Ok????"
+              to="Cory"
+              padding={16}
+            />
+          </Vew>
         </View>
         <View style={styles.space}></View>
       </View>
