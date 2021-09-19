@@ -1,27 +1,20 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
 import { FontAwesome } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerItem } from "@react-navigation/drawer";
 import * as React from 'react';
-import { Pressable } from 'react-native';
 import Vew from '../components/custom/Vew';
 
 import Colors from '../constants/Colors';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ActivityScreen from '../screens/ActivityScreen';
 import Txt from '../components/custom/Txt';
-import { useEffect } from 'react';
+import { Image } from "react-native";
+import { useAuth } from '../context/AuthContext';
 
 export default function Navigation() {
   return (
@@ -49,20 +42,48 @@ function RootNavigator() {
   );
 }
 
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const Drawer = createDrawerNavigator();
 
-
+const DrawerContent = ({navigation}:any) => {
+  const {email} = useAuth();
+  return (
+    <>
+      <Vew flex={1} flexDir="column">
+        <Vew py={16} px={8} mt={24} mb={-4} flexDir="row" style={{paddingVertical: 16, paddingHorizontal: 8}} justifyContent="flex-start" alignItems="center">
+          <Image style={{width: "25%", height: "100%", resizeMode: 'contain'}} source={require('../assets/images/white_logo_profile.png')} />
+          <Vew flexDir="column" justifyContent="center" ml={8}>
+            <Txt fontWeight="700" fontSize={20}>John Doe</Txt>
+            <Txt fontSize={20}>{email ? email : "johndoe@email.com"}</Txt>
+          </Vew>
+        </Vew>
+        {[
+            { name: "Dashboard", icon: "bars" },
+            { name: "Search", icon: "map" },
+            { name: "Activity", icon: "clock-o" },
+            { name: "Landlord", icon: "home" },
+            { name: "Message", icon: "comments" },
+            { name: "Settings", icon: "cog" },
+          ].map(({name, icon}, idx) => (
+            <DrawerItem
+              key={idx}
+              label={name}
+              icon={props => <FontAwesome color="white" size={18} name={icon as any} />}
+              activeTintColor="white"
+              labelStyle={{color:"white", fontSize:18, fontFamily: 'josefin'}}
+              onPress={() => {navigation.navigate(name)}}
+            />
+          ))
+        }
+      </Vew>
+    </>
+  )
+}
 
 function BottomTabNavigator() {
   return (
     <>
       <Drawer.Navigator initialRouteName="Dashboard" 
-        // drawerContent={props => (
-        //   <Vew >
-        //     <Txt>hi</Txt>
-        //   </Vew>
-        // )}
+        drawerContent={props => <DrawerContent {...props} />}
         screenOptions={{
           headerStyle: {
             backgroundColor: Colors.brand.green,
@@ -77,24 +98,6 @@ function BottomTabNavigator() {
           headerTintColor:"white",
         }}
       >
-        <Drawer.Screen name={"drawer_menu_logo"} component={({navigation}) => {
-          useEffect(() => { navigation.navigate("Dashboard") },[navigation])
-          return <></>;
-        }}
-          options={{
-            drawerIcon: () => (
-              <Vew flex={1} justifyContent="center" flexDir="row" alignItems="center" style={{elevation: 5, shadowOpacity: 0.5}}>
-
-              </Vew>
-            ),
-            drawerLabelStyle: {
-              color: "white",
-              fontSize: 20,
-              fontFamily: 'josefin',
-              display: "none"
-            }
-          }}
-        />
         {
           [
             { name: "Dashboard", component: TabOneScreen, icon: "bars" },
