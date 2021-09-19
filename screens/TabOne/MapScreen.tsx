@@ -1,7 +1,7 @@
 import React from 'react';
 import Vew from '../../components/custom/Vew';
-import MapView from 'react-native-maps';
-import { StyleSheet, Dimensions } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { StyleSheet, Dimensions, View } from 'react-native';
 
 interface MapLocationsInterface {
   address: string,
@@ -40,6 +40,11 @@ const locations:MapLocationsInterface[] = [
     postal: "Toronto, Ontario M6J 3E5",
     coords: { lat: 43.65247224588065, long: -79.4262537478195 }
   },
+  {
+    address: "Placeholder",
+    postal: "Placeholder",
+    coords: { lat: 43.65484329048789, long: -79.369218172954 }
+  },
 ]
 
 interface MapScreenProps {
@@ -50,7 +55,23 @@ const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
     return (
     <>
       <Vew style={styles.container}>
-        <MapView style={styles.map} />
+        <MapView style={styles.map} 
+          region={{
+            latitude: 43.659944814129624,
+            longitude: -79.37613383557787,
+            latitudeDelta: 0.03,
+            longitudeDelta: 0.01,
+          }}
+        >
+          {[locations.map(({address, coords, postal}, idx) => (
+            <Marker 
+              key={idx}
+              coordinate={{latitude: coords.lat, longitude: coords.long}}
+              // title={address}
+            />
+          ))]}
+
+        </MapView>
       </Vew>
     </>);
 }
