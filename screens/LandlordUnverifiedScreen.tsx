@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, Image, View, Text, Pressable, Alert} from 'react-native';
+import { ScrollView } from "react-native-gesture-handler";
 import ScreenTitle from '../components/ScreenTitle';
 
 export default function LandlordUnverifiedScreen() {
     return (
-        <View>
+        <ScrollView contentContainerStyle={{paddingBottom: 16}}>
             <View style={styles.container}>
                 <ScreenTitle title="Landlord" subtext="Earn income as a" path={require("../assets/images/home.png")} />
                 <Image source={require('../assets/images/bananas_and_monkey.png')}/>
@@ -13,7 +14,7 @@ export default function LandlordUnverifiedScreen() {
                     <Text style={styles.buttonText}>VERIFY</Text>
                 </Pressable>
             </View>
-        </View>
+        </ScrollView>
       );
   }
 
