@@ -36,16 +36,6 @@ interface MapScreenProps {
   navigation?: any
 }
 
-// const getBananaPath = (idx:number) => {
-//   if (idx === 0) {
-//     return require("../../assets/images/banana_4.png");
-//   } else if (idx === 1) {
-//     return require("../../assets/images/banana_1.png");
-//   } else {
-//     return require("../../assets/images/banana_2.png");
-//   }
-// }
-
 const getBananaImgs = (idx:number) => {
   const style:StyleProp<ImageStyle>={
     width: 64, height: 64,
@@ -60,8 +50,23 @@ const getBananaImgs = (idx:number) => {
   }
 }
 
+const getOnPress = (idx:number) => {
+  if (idx === 0) {
+    // $4
+    return () => {};
+  } else if (idx === 1) {
+    // $1
+    return () => {
+      console.log("pressed")
+    };
+  } else {
+    // $2
+    return () => {};
+  }
+}
+
 const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
-    return (
+  return (
     <>
       <Vew style={styles.container}>
         <MapView style={styles.map} 
@@ -76,6 +81,7 @@ const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
             <Marker 
               key={idx}
               coordinate={{latitude: coords.lat, longitude: coords.long}}
+              onPress={getOnPress(idx)}
               // title={address}
             >
               {getBananaImgs(idx)}
@@ -84,7 +90,8 @@ const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
 
         </MapView>
       </Vew>
-    </>);
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
