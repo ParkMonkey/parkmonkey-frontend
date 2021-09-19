@@ -47,61 +47,12 @@ function RootNavigator() {
   );
 }
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const Drawer = createDrawerNavigator();
 
 function BottomTabNavigator() {
   return (
     <>
-      {/* <BottomTab.Navigator
-        initialRouteName="TabOne"
-        screenOptions={{
-          tabBarActiveTintColor: Colors.brand.dark,
-          tabBarShowLabel: false,
-          tabBarItemStyle:{paddingBottom:3}
-        }}
-        >
-        <BottomTab.Screen
-          name="TabOne"
-          component={TabOneScreen}
-          options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-            title: 'Dashboard',
-            header: (props => <Vew p={20}></Vew>),
-            tabBarIcon: ({ focused }) => <TabBarIcon name="code" color={focused ? Colors.brand.green : Colors.brand.dark} />,
-            headerRight: () => (
-              <Pressable
-                onPress={() => navigation.navigate('Modal')}
-                style={({ pressed }) => ({
-                  opacity: pressed ? 0.5 : 1,
-                })}>
-                <FontAwesome
-                  name="info-circle"
-                  size={25}
-                  color={Colors.brand.dark}
-                  style={{ marginRight: 15 }}
-                />
-              </Pressable>
-            ),
-            headerStyle: {
-              // backgroundColor: Colors.brand.green,
-              elevation:0, shadowOpacity:0,
-            },
-          })}
-        />
-        <BottomTab.Screen
-          name="TabTwo"
-          component={TabTwoScreen}
-          options={{
-            title: 'Tab Two',
-            tabBarIcon: ({ focused }) => <TabBarIcon name="code" color={focused ? Colors.brand.green : Colors.brand.dark} />,
-          }}
-        />
-      </BottomTab.Navigator> */}
-
       <Drawer.Navigator initialRouteName="Dashboard" screenOptions={{
         headerStyle: {
           backgroundColor: Colors.brand.green,
@@ -113,23 +64,30 @@ function BottomTabNavigator() {
         drawerStyle: {
           backgroundColor: Colors.brand.green
         },
-        headerTintColor:"white"
+        headerTintColor:"white",
       }}>
-        <Drawer.Screen name="Dashboard" component={TabOneScreen} 
-          options={{
-            drawerIcon: () => (
-              <FontAwesome color="white" size={16} name="bars" />
-            ),
-            
-          }}
-        />
-        <Drawer.Screen name="Search" component={TabOneScreen} options={{
-
-        }} />
-        <Drawer.Screen name="Activity" component={ActivityScreen} />
-        <Drawer.Screen name="Landlord" component={TabOneScreen} />
-        <Drawer.Screen name="Message" component={TabOneScreen} />
-        <Drawer.Screen name="Settings" component={TabOneScreen} />
+        {
+          [
+            { name: "Dashboard", component: TabOneScreen, icon: "bars" },
+            { name: "Search", component: TabOneScreen, icon: "bars" },
+            { name: "Activity", component: ActivityScreen, icon: "bars" },
+            { name: "Landlord", component: TabOneScreen, icon: "bars" },
+            { name: "Message", component: TabOneScreen, icon: "bars" },
+            { name: "Settings", component: TabOneScreen, icon: "bars" },
+          ].map(({name, component, icon}, idx) => (
+            <Drawer.Screen name={name} component={component} key={idx} 
+              options={{
+                drawerIcon: () => (
+                  <FontAwesome color="white" size={16} name={icon as any} />
+                ),
+                drawerLabelStyle: {
+                  color: "white"
+                }
+              }}
+            />
+          ))
+        }
+        
       </Drawer.Navigator>
     </>
   );
