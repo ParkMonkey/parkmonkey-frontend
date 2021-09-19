@@ -23,6 +23,7 @@ import { Image } from "react-native";
 import { useAuth } from '../context/AuthContext';
 import SearchLocation from '../screens/TabOne/SearchLocation';
 import LandLordIndex from '../screens/LandLord/LandLordIndex';
+import ActivityIndex from '../screens/Activity/ActivityIndex';
 
 export default function Navigation() {
   return (
@@ -113,7 +114,7 @@ function BottomTabNavigator() {
           [
             { name: "Dashboard", component: TabOneScreen, icon: "bars" },
             { name: "Search", component: SearchLocation, icon: "map" },
-            { name: "Activity", component: ActivityScreen, icon: "clock-o" },
+            { name: "Activity", component: ActivityIndex, icon: "clock-o" },
             { name: "Landlord", component: LandLordIndex, icon: "home" },
             { name: "Message", component: MessagesMainScreen, icon: "comments" },
             { name: "Settings", component: SettingsScreen, icon: "cog" },

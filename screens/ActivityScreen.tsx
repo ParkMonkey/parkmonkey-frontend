@@ -6,13 +6,14 @@ import {
   Text,
   ScrollView,
   SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
 import ActivityCard from "../components/ActivityCard";
 import CurrentActivityCard from "../components/CurrentActivityCard";
 import Vew from "../components/custom/Vew";
 import ScreenTitle from "../components/ScreenTitle";
 
-export default function ActivityScreen() {
+export default function ActivityScreen({navigation}:any) {
   return (
     <ScrollView bounces={false}>
       <View style={styles.container}>
@@ -24,12 +25,14 @@ export default function ActivityScreen() {
         <View style={styles.cardsContainer}>
           <Vew mt={-40}>
             <Text style={styles.title}>Current Activity</Text>
-            <CurrentActivityCard
-              startTime="11AM"
-              endTime="7PM"
-              date="11/09/21"
-              address="6979 Greenrose Dr."
-            />
+            <TouchableOpacity onPress={() => navigation.navigate("ActivityOne")}>
+              <CurrentActivityCard
+                startTime="11AM"
+                endTime="7PM"
+                date="11/09/21"
+                address="6979 Greenrose Dr."
+              />
+            </TouchableOpacity>
           </Vew>
           <Vew mt={-32}>
             <Text style={styles.title}>Past Activity</Text>
