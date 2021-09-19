@@ -69,19 +69,21 @@ function BottomTabNavigator() {
         {
           [
             { name: "Dashboard", component: TabOneScreen, icon: "bars" },
-            { name: "Search", component: TabOneScreen, icon: "bars" },
-            { name: "Activity", component: ActivityScreen, icon: "bars" },
-            { name: "Landlord", component: TabOneScreen, icon: "bars" },
-            { name: "Message", component: TabOneScreen, icon: "bars" },
-            { name: "Settings", component: TabOneScreen, icon: "bars" },
+            { name: "Search", component: TabOneScreen, icon: "map" },
+            { name: "Activity", component: ActivityScreen, icon: "clock-o" },
+            { name: "Landlord", component: TabOneScreen, icon: "home" },
+            { name: "Message", component: TabOneScreen, icon: "comments" },
+            { name: "Settings", component: TabOneScreen, icon: "cog" },
           ].map(({name, component, icon}, idx) => (
             <Drawer.Screen name={name} component={component} key={idx} 
               options={{
                 drawerIcon: () => (
-                  <FontAwesome color="white" size={16} name={icon as any} />
+                  <FontAwesome color="white" size={18} name={icon as any} />
                 ),
                 drawerLabelStyle: {
-                  color: "white"
+                  color: "white",
+                  fontSize: 20,
+                  fontFamily: 'josefin'
                 }
               }}
             />

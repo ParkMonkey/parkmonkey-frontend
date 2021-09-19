@@ -96,7 +96,7 @@ const Txt: React.FC<CustomTextProps> = (
     }
 
     return (
-        <Text style={[getStyle(), style]}>
+        <Text style={[getStyle(), style, {fontFamily: 'josefin'}]}>
             {children}
         </Text>
     );
