@@ -6,6 +6,7 @@ interface ActivityCardProps {
   date: string;
   time: string;
   address: string;
+  padding?: number,
 }
 
 export default function ActivityCard(props: ActivityCardProps) {
@@ -14,6 +15,7 @@ export default function ActivityCard(props: ActivityCardProps) {
       style={[
         styles.container,
         props.isGreen ? styles.containerGreen : undefined,
+        {padding: props.padding ? props.padding : 20}
       ]}
     >
       <Text style={styles.date}>{props.date}</Text>
@@ -28,7 +30,6 @@ export default function ActivityCard(props: ActivityCardProps) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "black",
-    padding: 20,
     borderRadius: 30,
     display: "flex",
     shadowColor: "#000",

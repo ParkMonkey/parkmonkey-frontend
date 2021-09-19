@@ -1,27 +1,37 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import Vew from './custom/Vew';
 
 interface DashboardMessagesProps {
   date: string;
   message: string;
+  padding?: number;
+  to?: string;
 }
 
 export default function DashboardMessages(props: DashboardMessagesProps) {
     return (
-        <View style={styles.container}>
-            <Text style={styles.date}>{props.date}</Text>
+        <View style={[styles.container, {padding: props.padding ? props.padding : 30}]}>
+          {
+            props.to ? (
+              <Vew flexDir="row" justifyContent="space-between">
+                <Text style={{color:"black", fontSize:16}}>To: <Text style={[styles.date, {fontSize:16}]}>{props.to}</Text></Text>
+                <Text style={[styles.date, {fontSize:16}]}>{props.date}</Text>
+              </Vew>
+            ) : (
+              <Text style={styles.date}>{props.date}</Text>
+            )
+          }
             <View>
               <Text style={styles.message}>{props.message} </Text>
             </View>
         </View>
-
       );
   }
   
   const styles = StyleSheet.create({
     container: {
       backgroundColor: 'white',
-      padding: 30,
       borderStyle: 'solid',
       borderWidth: 3,
       borderRadius: 30,
@@ -42,7 +52,7 @@ export default function DashboardMessages(props: DashboardMessagesProps) {
       color: 'black',
       fontFamily: 'josefin',
       fontSize: 15,
-      marginBottom: 20,
+      marginBottom: 5,
       fontWeight: 'bold'
     },
     message: {
