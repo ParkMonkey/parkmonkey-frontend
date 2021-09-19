@@ -55,5 +55,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: "josefin",
     fontSize: 30,
+    fontWeight: "700"
   },
 });
