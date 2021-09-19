@@ -6,7 +6,7 @@ export default function LandlordUnverifiedScreen() {
     return (
         <View>
             <View style={styles.container}>
-                <ScreenTitle title="Landlord" subtext="Earn income as a" path={require("../assets/images/cog.png")} />
+                <ScreenTitle title="Landlord" subtext="Earn income as a" path={require("../assets/images/home.png")} />
                 <Image source={require('../assets/images/bananas_and_monkey.png')}/>
                 <Text style={styles.title}>It doesn't seem like you are verified yet...</Text>
                 <Pressable style={styles.button} onPress={() => Alert.alert('Verify Button pressed')}>
