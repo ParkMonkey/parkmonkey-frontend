@@ -1,7 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function DashboardMessages(props) {
+interface DashboardMessagesProps {
+  date: string;
+  message: string;
+}
+
+export default function DashboardMessages(props: DashboardMessagesProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.date}>{props.date}</Text>
@@ -16,7 +21,6 @@ export default function DashboardMessages(props) {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: 'white',
-      width: 600,
       padding: 30,
       borderStyle: 'solid',
       borderWidth: 3,
@@ -37,14 +41,14 @@ export default function DashboardMessages(props) {
       alignSelf: 'flex-end',
       color: 'black',
       fontFamily: 'josefin',
-      fontSize: 20,
+      fontSize: 15,
       marginBottom: 20,
       fontWeight: 'bold'
     },
     message: {
       color: 'black',
       fontFamily: 'josefin',
-      fontSize: 20,
+      fontSize: 18,
       marginBottom: 5,
       maxWidth: 700
     },
