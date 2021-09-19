@@ -13,6 +13,7 @@ import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ActivityScreen from '../screens/ActivityScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import MessagesMainScreen from '../screens/MessagesMainScreen';
 import Txt from '../components/custom/Txt';
 import { Image } from "react-native";
 import { useAuth } from '../context/AuthContext';
@@ -108,7 +109,7 @@ function BottomTabNavigator() {
             { name: "Search", component: TabOneScreen, icon: "map" },
             { name: "Activity", component: ActivityScreen, icon: "clock-o" },
             { name: "Landlord", component: TabOneScreen, icon: "home" },
-            { name: "Message", component: TabOneScreen, icon: "comments" },
+            { name: "Message", component: MessagesMainScreen, icon: "comments" },
             { name: "Settings", component: SettingsScreen, icon: "cog" },
           ].map(({name, component, icon}, idx) => (
             <Drawer.Screen name={name} component={component} key={idx} 
