@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { StyleSheet, Image, View, Text, ScrollView, Switch} from 'react-native';
+import Vew from "../components/custom/Vew";
 import ScreenTitle from '../components/ScreenTitle';
+import Colors from "../constants/Colors";
 
 export default function SettingsScreen() {
     return (
-        <View>
+        <ScrollView>
             <View style={styles.container}>
                 <ScreenTitle title="Settings" subtext="Change Permissions" path={require("../assets/images/cog.png")} />
-                <Text style={styles.title}>Change Permissions</Text>
+                <Vew mt={-32}>
+                    <Text style={styles.title}>Change Permissions</Text>
+                </Vew>
             </View>
 
             <View style={styles.switchList}>
@@ -16,19 +20,19 @@ export default function SettingsScreen() {
                 <SwitchItem label='Texting'/>
                 <SwitchItem label='Calender'/>
             </View>
-        </View>
+        </ScrollView>
       );
   }
 
-const SwitchItem = (props) => {
-    const [isEnabled, setIsEnabled] = useState(false);
+const SwitchItem = (props:any) => {
+    const [isEnabled, setIsEnabled] = useState(true);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     return (
         <View style={styles.switchContainer}>
             <Text style={styles.switchLabel}>{props.label}</Text>
             <Switch
-                trackColor={{ false: "#1ECF65", true: "#1ECF65" }}
+                trackColor={{ false: Colors.brand.dark, true: "#1ECF65" }}
                 thumbColor={"#CCE3D5"}
                 ios_backgroundColor="#CF291E"
                 onValueChange={toggleSwitch}
@@ -49,7 +53,7 @@ const styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: 'bold',
         marginBottom: 30,
-        maxWidth: 500
+        paddingHorizontal: 16,
     },
     switchContainer: {
         display: 'flex',
@@ -60,7 +64,8 @@ const styles = StyleSheet.create({
         padding: 15,
         width: 500,
         borderRadius: 20, 
-        margin: 12,
+        margin: 6,
+        marginBottom: 0,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -68,13 +73,13 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
-
         elevation: 3,
+        paddingHorizontal: 30
     },
     switchLabel: {
         fontFamily: 'josefin',
         fontSize: 30,
-        width: 200
+        width: 200,
     },
     switchList: {
         display: "flex",
@@ -83,6 +88,7 @@ const styles = StyleSheet.create({
         width: 600,
         alignSelf: 'center',
         borderRadius: 20,
-        padding: 30
+        padding: 30,
+        paddingTop: 6,
     },
 });
