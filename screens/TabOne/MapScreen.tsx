@@ -9,6 +9,7 @@ const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
     return (
     <>
         <Vew>
+            
         </Vew>
     </>);
 }
