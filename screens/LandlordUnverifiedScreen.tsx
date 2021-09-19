@@ -3,14 +3,14 @@ import { StyleSheet, Image, View, Text, Pressable, Alert} from 'react-native';
 import { ScrollView } from "react-native-gesture-handler";
 import ScreenTitle from '../components/ScreenTitle';
 
-export default function LandlordUnverifiedScreen() {
+export default function LandlordUnverifiedScreen({navigation}:any) {
     return (
         <ScrollView contentContainerStyle={{paddingBottom: 16}}>
             <View style={styles.container}>
                 <ScreenTitle title="Landlord" subtext="Earn income as a" path={require("../assets/images/home.png")} />
                 <Image source={require('../assets/images/bananas_and_monkey.png')}/>
                 <Text style={styles.title}>It doesn't seem like you are verified yet...</Text>
-                <Pressable style={styles.button} onPress={() => Alert.alert('Verify Button pressed')}>
+                <Pressable style={styles.button} onPress={() => navigation.navigate("VerifyOne")}>
                     <Text style={styles.buttonText}>VERIFY</Text>
                 </Pressable>
             </View>
