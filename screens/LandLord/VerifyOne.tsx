@@ -15,7 +15,7 @@ const VerifyOne: React.FC<PaymentOneProps> = ({navigation}) => {
                 <Vew w={Dimensions.get('window').width} flex={1} justifyContent="center" alignItems="center">
                     <Image 
                         source={require('../../assets/images/Verify_1.png')}
-                        style={{resizeMode: 'contain', height: 1900}}
+                        style={{resizeMode: 'contain', height: 1390}}
                     />
                 </Vew>
             </TouchableOpacity>

@@ -14,7 +14,7 @@ const VerifyTwo: React.FC<PaymentTwoProps> = ({navigation}) => {
             <Vew w={Dimensions.get('window').width} flex={1} justifyContent="center" alignItems="center">
                 <Image 
                     source={require('../../assets/images/Verify_2.png')}
-                    style={{resizeMode: 'contain', height: 600}}
+                    style={{resizeMode: 'contain', height: 1680}}
                 />
             </Vew>
         </ScrollView>
