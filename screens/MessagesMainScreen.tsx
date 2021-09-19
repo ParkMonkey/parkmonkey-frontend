@@ -7,7 +7,9 @@ import {
   ScrollView,
   SafeAreaView,
   ImageSourcePropType,
+  Dimensions,
 } from "react-native";
+import Vew from "../components/custom/Vew";
 import ScreenTitle from "../components/ScreenTitle";
 
 export default function MessagesMainScreen() {
@@ -20,17 +22,19 @@ export default function MessagesMainScreen() {
           path={require("../assets/images/forum.png")}
         />
       </View>
-      <MessageCard
-        address="6979 Greenrose Dr."
-        lastMessage="Hey are you still interested? I can lower the price if you'd like!"
-        path={require("../assets/images/house_1.png")}
-      />
-      <MessageCard
-        address="7823 Hickory Cres."
-        lastMessage="Great! I look forward to seeing you in 30 minutes!"
-        path={require("../assets/images/house_2.png")}
-      />
-      <View style={styles.space}></View>
+      <Vew mt={-30} width={Dimensions.get("window").width - 32} justifyContent="center">
+        <MessageCard
+          address="6979 Greenrose Dr."
+          lastMessage="Hey are you still interested? I can lower the price if you'd like!"
+          path={require("../assets/images/house_1.png")}
+        />
+        <MessageCard
+          address="7823 Hickory Cres."
+          lastMessage="Great! I look forward to seeing you in 30 minutes!"
+          path={require("../assets/images/house_2.png")}
+        />
+        <View style={styles.space}></View>
+      </Vew>
     </ScrollView>
   );
 }
@@ -44,7 +48,9 @@ interface MessageCardProps {
 function MessageCard(props: MessageCardProps) {
   return (
     <View style={styles.cardContainer}>
-      <Image style={styles.image} source={props.path} />
+      <Vew alignItems="center" justifyContent="center">
+        <Image style={styles.image} source={props.path} />
+      </Vew>
       <View style={styles.cardText}>
         <Text style={styles.address}>{props.address}</Text>
         <Text style={styles.message}>{props.lastMessage}</Text>
@@ -68,7 +74,9 @@ const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: "white",
     padding: 10,
+    paddingVertical: 5,
     margin: 20,
+    marginVertical: 5,
     borderRadius: 15,
     display: "flex",
     alignSelf: "center",
@@ -78,7 +86,6 @@ const styles = StyleSheet.create({
     fontFamily: "josefin",
     fontSize: 25,
     marginBottom: 20,
-    marginTop: 20,
     padding: 20,
   },
   message: {
@@ -87,6 +94,7 @@ const styles = StyleSheet.create({
     maxWidth: 250,
     padding: 20,
     paddingTop: 0,
+    marginTop: 0,
   },
   image: {
     width: 125,
