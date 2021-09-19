@@ -50,14 +50,14 @@ const getBananaImgs = (idx:number) => {
   }
 }
 
-const getOnPress = (idx:number) => {
+const getOnPress = (idx:number, navigation:any) => {
   if (idx === 0) {
     // $4
     return () => {};
   } else if (idx === 1) {
     // $1
     return () => {
-      console.log("pressed")
+      navigation.navigate("ViewingBeforePurchase");
     };
   } else {
     // $2
@@ -81,7 +81,7 @@ const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
             <Marker 
               key={idx}
               coordinate={{latitude: coords.lat, longitude: coords.long}}
-              onPress={getOnPress(idx)}
+              onPress={getOnPress(idx, navigation)}
               // title={address}
             >
               {getBananaImgs(idx)}

@@ -9,6 +9,7 @@ import Colors from '../constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
 import SearchLocation from './TabOne/SearchLocation';
 import DashboardScreen from './DashboardScreen';
+import ViewingBeforePurchase from './TabOne/ViewingBeforePurchase';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,17 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
           cardStyle: {
             backgroundColor: "#CADBE1"
           }
+      }}
+      />
+      <Stack.Screen name="ViewingBeforePurchase" component={ViewingBeforePurchase} 
+        options={{
+          headerTitleAlign: "center",
+          headerTitle: (props => <></>),
+          headerTintColor: "whitesmoke", // back arrow
+          headerStyle: {
+            backgroundColor: Colors.brand.green,
+            elevation:0, shadowOpacity:0
+          },
       }}
       />
     </Stack.Navigator>
