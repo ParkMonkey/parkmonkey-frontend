@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Text, View, Image, Dimensions, Pressable, Alert } from 'react-native'
+import React, { Component, useState } from 'react';
+import { Text, View, Image, Dimensions, Pressable, Alert, Modal } from 'react-native'
 import Swiper from 'react-native-swiper'
 
 const { width } = Dimensions.get('window')
@@ -7,36 +7,37 @@ const { width } = Dimensions.get('window')
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: '#1ECF65',
   },
 
-  wrapper: {},
+  wrapper: {
+    marginTop: 60
+  },
 
   slide: {
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#1ECF65',
+    flexDirection:"column"
   },
 
   title: {
     color: '#fff',
     fontSize: 60,
     fontWeight: 'bold',
-    margin: 20,
+    margin: 16,
     fontFamily: 'josefin',
   },
 
   text: {
       color: 'white',
-      fontSize: 30,
+      fontSize: 20,
       fontFamily: 'josefin',
       textAlign: 'center',
-      maxWidth: 600,
+      paddingHorizontal: 16
   },
 
   image: {
-      marginTop: 120,
-      marginBottom: 30
   },
 
   bottomSection: {
@@ -44,7 +45,6 @@ const styles = {
       display: 'flex',
       alignItems: 'center',
       backgroundColor: 'white'
-
   },
 
   buttonSignUp: {
@@ -92,11 +92,19 @@ const styles = {
 
 }
 
+interface IntroInterface {
+  updateParentState:any
+}
 
-
-export default class extends Component {
-  render() {
-    return (
+const IntroductionScreen:React.FC<IntroInterface> = ({ updateParentState }) => {
+  const [open, setOpen] = useState(true);
+  return (
+    <Modal
+      animationType="slide"
+      transparent={false}
+      visible={open}
+      onRequestClose={() => setOpen(false)}
+    >
       <View style={styles.container}>
         <Swiper 
             style={styles.wrapper} 
@@ -109,7 +117,7 @@ export default class extends Component {
                     height: 12,
                     borderRadius: 4, 
                     margin: 5,
-                    marginBottom: 40
+                    marginBottom: 10
                 }}/>
             }
             activeDot={
@@ -119,7 +127,7 @@ export default class extends Component {
                     height: 12,
                     borderRadius: 4, 
                     margin: 5,
-                    marginBottom: 40
+                    marginBottom: 10
                 }}/>
             }            
         >
@@ -128,9 +136,9 @@ export default class extends Component {
             <Text style={styles.title}>Welcome,</Text>
             <Text style={styles.text}>swipe right to learn more about ParkMonkey!</Text>
           </View>
-          <View style={styles.slide}>
+          <View style={[styles.slide, {marginTop: -6, overflow:"visible"}]}>
             <Image style={styles.image} source={require('../assets/images/slide_2.png')}/>
-            <Text style={styles.title}>The World's First</Text>
+            <Text style={[styles.title, {fontSize: 45, textAlign:"center"}]}>The World's First</Text>
             <Text style={styles.text}>parking app using household driveways!</Text>
           </View>
           <View style={styles.slide}>
@@ -148,11 +156,13 @@ export default class extends Component {
             <Pressable style={styles.buttonSignUp} onPress={() => Alert.alert('Sign Up Button pressed')}>
                 <Text style={styles.buttonText}>SIGN UP</Text>
             </Pressable>
-            <Pressable style={styles.buttonLogIn} onPress={() => Alert.alert('Log In Button pressed')}>
+            <Pressable style={styles.buttonLogIn} onPress={() => {setOpen(false); updateParentState();}}>
                 <Text style={styles.buttonText}>LOG IN</Text>
             </Pressable>
         </View>
       </View>
-    )
-  }
+    </Modal>
+  )
 }
+
+export default IntroductionScreen;
