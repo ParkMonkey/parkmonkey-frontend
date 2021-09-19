@@ -56,6 +56,9 @@ const DrawerContent = ({navigation}:any) => {
             <Txt fontSize={20}>{email ? email : "johndoe@email.com"}</Txt>
           </Vew>
         </Vew>
+        <Vew alignItems="center">
+          <Vew style={{borderBottomWidth: 3, backgroundColor: "white", opacity: 0.1, width: "90%", borderRadius: 16}} />
+        </Vew>
         {[
             { name: "Dashboard", icon: "bars" },
             { name: "Search", icon: "map" },
