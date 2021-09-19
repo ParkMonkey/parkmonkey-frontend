@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import Colors from '../constants/Colors';
 import { useAuth } from '../context/AuthContext';
+import IntroductionScreen from '../screens/IntroductionScreen';
 import Btn from './custom/Btn';
 import Txt from './custom/Txt';
 import Vew from './custom/Vew';
@@ -13,6 +14,8 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
     const [open, setOpen] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [showIntroOrLoginModal, setShowIntroOrLoginModal] = useState<"Intro" | "LoginModal">("Intro");
 
     const toggle = () => setOpen(!open);
 
@@ -38,6 +41,7 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
         toggle();
     }
 
+    if (showIntroOrLoginModal === "Intro") return <IntroductionScreen updateParentState={() => setShowIntroOrLoginModal("LoginModal")} />
     return (
     <>
         <Modal
