@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   cardContainer: {
+    marginTop: 12,
     paddingHorizontal: 20,
   },
   title: {

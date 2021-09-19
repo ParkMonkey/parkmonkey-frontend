@@ -20,20 +20,7 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={DashboardScreen} 
-        options={{
-          headerShown: false,
-          headerTitle: (props => (
-            <></>
-          )),
-          headerTintColor: "whitesmoke", // back arrow
-          headerStyle: {
-            backgroundColor: Colors.brand.green,
-            elevation:0, shadowOpacity:0, zIndex: 0
-          },
-          // cardStyle:{
-          //   backgroundColor: Colors.brand.dark,
-          // }
-        }}
+        options={{headerShown: false}}
       />
       <Stack.Screen name="Map" component={MapScreen} 
         options={{
