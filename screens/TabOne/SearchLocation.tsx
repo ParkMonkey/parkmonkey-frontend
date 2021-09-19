@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Vew from '../../components/custom/Vew';
 import { Dimensions, ScrollView, TextInput } from 'react-native';
 import Colors from '../../constants/Colors';
 import Txt from '../../components/custom/Txt';
 import { FontAwesome } from '@expo/vector-icons';
 
-const locations = [
+interface LocationsInterface {
+    address: string,
+    postal: string
+}
+
+const locations:LocationsInterface[] = [
     {
         address: "4517 Gallpoint Cres.",
         postal: "Toronto, Ontario L6N 5D5"
@@ -43,7 +48,15 @@ interface SearchLocationProps {
 const SearchLocation: React.FC<SearchLocationProps> = ({navigation}) => {
 
     const [search, setSearch] = useState("");
+    const [filtered, setFiltered] = useState<LocationsInterface[]>(locations);
 
+    useEffect(() => {
+        if (search === "") return setFiltered(locations);
+
+        let temp = [...locations];
+        temp = temp.filter(location => location.address.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || location.postal.toLocaleLowerCase().includes(search));
+        setFiltered(temp);
+    }, [search]);
 
     return (
         <Vew flexDir="column" bg={Colors.brand.green}>
@@ -72,7 +85,7 @@ const SearchLocation: React.FC<SearchLocationProps> = ({navigation}) => {
             <ScrollView style={{backgroundColor: "#CADBE1"}} contentContainerStyle={{paddingBottom: locations.length * 8}}>
                 <Vew flex={1} style={{borderTopLeftRadius: 27, borderTopRightRadius: 27}} p={16}>
                     {
-                        locations.map(({address, postal}, idx) => (
+                        filtered.map(({address, postal}, idx) => (
                             <Vew flexDir="row" bg="white" padding={16} borderRadius={8} key={idx} mb={8} alignItems="center">
                                 <FontAwesome name="map" size={32} color="#C4C4C4" />
                                 <Vew flexDir="column" ml={12}>
