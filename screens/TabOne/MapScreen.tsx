@@ -1,7 +1,7 @@
 import React from 'react';
 import Vew from '../../components/custom/Vew';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Dimensions, View } from 'react-native';
+import { StyleSheet, Dimensions, Image } from 'react-native';
 
 interface MapLocationsInterface {
   address: string,
@@ -68,7 +68,11 @@ const MapScreen: React.FC<MapScreenProps> = ({navigation}) => {
               key={idx}
               coordinate={{latitude: coords.lat, longitude: coords.long}}
               // title={address}
-            />
+            >
+              <Image source={require("../../assets/images/banana.png")} style={{
+                width: 64, height: 64,
+              }} />
+            </Marker>
           ))]}
 
         </MapView>
