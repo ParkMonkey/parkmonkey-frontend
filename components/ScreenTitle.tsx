@@ -20,7 +20,7 @@ export default function ScreenTitle(props) {
       backgroundColor: '#1ECF65',
       width: '100%',
       padding: 40,
-      paddingTop: 30,
+      paddingTop: 10,
       paddingBottom: 60,
       borderBottomLeftRadius: 15,
       borderBottomRightRadius: 15,

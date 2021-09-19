@@ -11,9 +11,12 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+
+import DashboardScreen from '../screens/DashboardScreen';
 import ActivityScreen from '../screens/ActivityScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MessagesMainScreen from '../screens/MessagesMainScreen';
+
 import LandlordUnverifiedScreen from '../screens/LandlordUnverifiedScreen';
 import Txt from '../components/custom/Txt';
 import { Image } from "react-native";
@@ -106,7 +109,7 @@ function BottomTabNavigator() {
       >
         {
           [
-            { name: "Dashboard", component: TabOneScreen, icon: "bars" },
+            { name: "Dashboard", component: DashboardScreen, icon: "bars" },
             { name: "Search", component: TabOneScreen, icon: "map" },
             { name: "Activity", component: ActivityScreen, icon: "clock-o" },
             { name: "Landlord", component: LandlordUnverifiedScreen, icon: "home" },

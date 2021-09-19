@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 export default function ActivityCard(props) {
     return (
-        <View style={styles.container}>
+        <View style={props.isGreen ? styles.containerGreen : styles.container}>
             <Text style={styles.date}>{props.date}</Text>
             <View>
               <Text style={styles.time}>You Parked {props.time} min</Text>
@@ -17,6 +17,23 @@ export default function ActivityCard(props) {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: 'black',
+      width: 600,
+      padding: 20,
+      borderRadius: 30,
+      display: 'flex',
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+
+      elevation: 5,
+      marginBottom: 60
+    },
+    containerGreen: {
+      backgroundColor: '#1ECF65',
       width: 600,
       padding: 20,
       borderRadius: 30,
