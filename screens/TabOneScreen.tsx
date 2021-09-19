@@ -58,7 +58,7 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
                 opacity: pressed ? 0.5 : 1,
               })}>
               <FontAwesome
-                name="bullseye"
+                name="search"
                 size={25}
                 color={Colors.brand.white}
                 style={{ marginRight: 15 }}
