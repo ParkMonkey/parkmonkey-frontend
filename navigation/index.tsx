@@ -21,6 +21,7 @@ import LandlordUnverifiedScreen from '../screens/LandlordUnverifiedScreen';
 import Txt from '../components/custom/Txt';
 import { Image } from "react-native";
 import { useAuth } from '../context/AuthContext';
+import SearchLocation from '../screens/TabOne/SearchLocation';
 
 export default function Navigation() {
   return (
@@ -110,7 +111,7 @@ function BottomTabNavigator() {
         {
           [
             { name: "Dashboard", component: DashboardScreen, icon: "bars" },
-            { name: "Search", component: TabOneScreen, icon: "map" },
+            { name: "Search", component: SearchLocation, icon: "map" },
             { name: "Activity", component: ActivityScreen, icon: "clock-o" },
             { name: "Landlord", component: LandlordUnverifiedScreen, icon: "home" },
             { name: "Message", component: MessagesMainScreen, icon: "comments" },
@@ -125,7 +126,9 @@ function BottomTabNavigator() {
                   color: "white",
                   fontSize: 20,
                   fontFamily: 'josefin'
-                }
+                },
+                // dont use this search in demo, use the search from map, as the search from map doesnt cut off bg coloring during search
+                // drawerContentStyle: name === "Search" ? {backgroundColor: "#CADBE1"} : {}
               }}
             />
           ))
