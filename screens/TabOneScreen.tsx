@@ -10,6 +10,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import SearchLocation from './TabOne/SearchLocation';
 import DashboardScreen from './DashboardScreen';
 import ViewingBeforePurchase from './TabOne/ViewingBeforePurchase';
+import PaymentOne from './TabOne/PaymentOne';
+import PaymentTwo from './TabOne/PaymentTwo';
 
 const Stack = createStackNavigator();
 
@@ -76,6 +78,29 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
           },
       }}
       />
+      <Stack.Screen name="PaymentOne" component={PaymentOne} 
+        options={{
+          headerTitleAlign: "center",
+          headerTitle: (props => <></>),
+          headerTintColor: "whitesmoke", // back arrow
+          headerStyle: {
+            backgroundColor: Colors.brand.green,
+            elevation:0, shadowOpacity:0
+          },
+      }}
+      />
+      <Stack.Screen name="PaymentTwo" component={PaymentTwo} 
+        options={{
+          headerTitleAlign: "center",
+          headerTitle: (props => <></>),
+          headerTintColor: "whitesmoke", // back arrow
+          headerStyle: {
+            backgroundColor: Colors.brand.green,
+            elevation:0, shadowOpacity:0
+          },
+      }}
+      />
+      
     </Stack.Navigator>
     
   );
