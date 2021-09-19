@@ -8,6 +8,7 @@ import Txt from '../components/custom/Txt';
 import { useAuth } from '../context/AuthContext';
 import Colors from '../constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
+import SearchLocation from './TabOne/SearchLocation';
 
 const Stack = createStackNavigator();
 
@@ -52,7 +53,7 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
           },
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Modal')}
+              onPress={() => navigation.navigate('SearchLocation')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
@@ -67,6 +68,17 @@ export default function TabOneScreen({ navigation }: TabOneScreenInterface) {
           // cardStyle:{
           //   backgroundColor: Colors.brand.dark,
           // }
+      }}
+      />
+      <Stack.Screen name="SearchLocation" component={SearchLocation} 
+        options={{
+          headerTitleAlign: "center",
+          headerTitle: (props => <Txt fontWeight="700" fontSize={22} textAlign="center" flexWrap="wrap">Search Location</Txt>),
+          headerTintColor: "whitesmoke", // back arrow
+          headerStyle: {
+            backgroundColor: Colors.brand.green,
+            elevation:5, shadowOpacity:.5
+          },
       }}
       />
     </Stack.Navigator>
